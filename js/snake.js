@@ -82,8 +82,8 @@ function update(event) {
 
 
 //Iniciar o jogo
-function playSnake () {
-	
+function playSnake() {	
+		
 	if (snake[0].x > 15*box && direction == "right") {
 		snake[0].x = 0;	
 	}	
@@ -99,6 +99,20 @@ function playSnake () {
 	if (snake[0].y < 0 && direction == "up") {
 		snake[0].y = 16*box;	
 	}	
+	
+	
+	/*
+		verifica se a cabeça se choca com o
+		corpo da snake e finaliza o jogo	
+	*/
+	
+	for (i = 1; i < snake.length; i++) {
+		if ((snake[0].x == snake[i].x) && (snake[0].y == snake[i].y) ) {
+			clearInterval(playSnake);	
+			alert("Game Over!");
+		}			
+	}
+	
 	
 	
 	
@@ -124,9 +138,16 @@ function playSnake () {
 	if (direction == "up") {
 		snakey -= box;	
 	}
-	
-	snake.pop();
-	
+
+
+	if ((snakex != object.x) || (snakey != object.y)) {
+		snake.pop();	
+	}
+	else {
+		object.x = Math.floor(Math.random() * 15+1) * box;
+		object.y = Math.floor(Math.random() * 15+1) * box;
+	}	
+		
 	newheadSnake = {
 		x: snakex,
 		y: snakey	

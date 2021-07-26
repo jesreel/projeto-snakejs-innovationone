@@ -8,6 +8,7 @@ snake[0] = {
 }
 
 direction = "down";
+
 object = {
 	x: Math.floor(Math.random() * 15+1) * box,
 	y: Math.floor(Math.random() * 15+1) * box
@@ -32,7 +33,7 @@ function createSnake() {
 //criando objeto que a snake vai pegar
 function createObject() {
 	context.fillStyle = "red";
-	context.fillRect();
+	context.fillRect(object.x, object.y, box, box);
 }
 	
 
@@ -103,6 +104,7 @@ function playSnake () {
 	
 	background();
 	createSnake();
+	createObject();
 	
 	snakex = snake[0].x;
 	snakey = snake[0].y;	
@@ -122,9 +124,16 @@ function playSnake () {
 	if (direction == "up") {
 		snakey -= box;	
 	}
-	
-	snake.pop();
-	
+
+
+	if ((snakex != object.x) || (snakey != object.y)) {
+		snake.pop();	
+	}
+	else {
+		object.x = Math.floor(Math.random() * 15+1) * box;
+		object.y = Math.floor(Math.random() * 15+1) * box;
+	}	
+		
 	newheadSnake = {
 		x: snakex,
 		y: snakey	
