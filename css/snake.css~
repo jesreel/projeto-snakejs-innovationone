@@ -10,6 +10,8 @@
 	margin-bottom: 10px;
 }
 
-#snake {	
+#snake {
+	width: 512px;
+	height: 512px;
 	border: 5px solid green;
 }

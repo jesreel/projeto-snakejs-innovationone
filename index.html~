@@ -8,11 +8,10 @@
 <title>SnakeJS</title>
 </head>
 <body>
-	<canvas id="snake" width="512" height="512">
-	
-	</canvas>
-	
-	
-	
+	<div class="snakegame">
+		<img src="img/snake.png" alt="Snake Game">
+		<canvas id="snake"></canvas>	
+	</div>
+	<script src="js/snake.js"></script>	
 </body>
 </html>
